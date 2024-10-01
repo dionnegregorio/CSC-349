@@ -1,32 +1,40 @@
 import sys 
 
-list_input = sys.argv[1]
-
-file = open(list_input, 'r') 
-
+file_name = sys.argv[1]
+file = open(file_name, 'r') 
 list = file.readlines()
 
-start = 0
-end = len(list)
+"""def singleton(list, start, end):
+  
+    if start == end:
+        print(list[start])
+        return None 
+   
+    mid = (start + end) // 2
 
-def find_singleton(list):
+    if mid % 2 == 1 and list[mid] == list[mid - 1]:
+            singleton(list, mid + 1, end)
+    elif mid % 2 == 1 and list[mid] == list[mid + 1]:
+        singleton(list, start, mid - 1)
+    elif mid % 2 == 0 and list[mid] == list[mid - 1]:
+         singleton(list, start, mid-1)
+    elif mid % 2 == 0 and list[mid] == list[mid + 1]:
+         singleton(list, mid + 1, end)
+    else: 
+        print (list[mid])
 
-    start = 0
-    end = len(list) - 1
+singleton(list, 0, len(list)-1)"""
 
-    while start < end:
-        middle = (start + end) // 2
-
-        #check if index is odd
-        if middle % 2 == 1:
-            middle -= 1
-
-        #compare middle num to its right side
-        if list[middle] == list[middle + 1]:
-            start = middle + 2
-        else: 
-            end = middle       
-
-    return list[middle + 2];
+def singleton(lst, start, end):
+    if start == end:
+        print(lst[start])
+        return None
     
-print(find_singleton(list))
+    mid = (start + end) // 2
+    
+    if (mid % 2 == 0 and lst[mid] == lst[mid + 1]) or (mid % 2 == 1 and lst[mid] == lst[mid - 1]):
+        singleton(lst, mid + 1, end)
+    else:
+        singleton(lst, start, mid)
+
+singleton(list, 0, len(list)-1)
