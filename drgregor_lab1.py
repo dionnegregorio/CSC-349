@@ -11,6 +11,8 @@ def singleton(lst, start, end):
     
     mid = (start + end) // 2
     
+    #even indexes are the first occurence of a duplicate so if not, call function on the left side
+    #odd indexes are the second occurence of a duplicate so if not, call function on the left side
     if (mid % 2 == 0 and lst[mid] == lst[mid + 1]) or (mid % 2 == 1 and lst[mid] == lst[mid - 1]):
         singleton(lst, mid + 1, end)
     else:
