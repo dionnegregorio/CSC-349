@@ -23,7 +23,7 @@ singleton(list, 0, len(list)-1)
 
 """def singleton(list, start, end):
   
-    if start == end:
+    if start == end
         print(list[start])
         return None 
    
